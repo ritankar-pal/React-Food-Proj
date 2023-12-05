@@ -1,29 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-
-const Header = () =>{
-
-    return(
-        <div className="header">
-            <div className="logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy_mLV1R0U7LZxJXac9Yv5j8Aohtk-rzZO2A&usqp=CAU" alt="foodLogo"/>
-            </div>
-
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-
-const resObj = [
+//Data Source (API)::
+const resList = [
     {
         "info": {
             "id": "124178",
@@ -117,11 +93,6 @@ const resObj = [
             "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
             "restaurantOfferPresentationInfo": {}
         },
-        "analytics": {},
-        "cta": {
-            "link": "https://www.swiggy.com/restaurants/starbucks-coffee-ashok-nagar-lavelle-road-bangalore-124178",
-            "type": "WEBLINK"
-        }
     },
     {
         "info": {
@@ -194,11 +165,6 @@ const resObj = [
             "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
             "restaurantOfferPresentationInfo": {}
         },
-        "analytics": {},
-        "cta": {
-            "link": "https://www.swiggy.com/restaurants/brahmins-thatte-idli-vyalikaval-malleshwaram-bangalore-176071",
-            "type": "WEBLINK"
-        }
     },
     {
         "info": {
@@ -1849,50 +1815,4 @@ const resObj = [
     }
 ];
 
-
-const RestaurantCard = (props) =>{
-
-    const { resData } = props;
-    console.log(resData);
-
-    const {cloudinaryImageId, name, cuisines, avgRatingString, costForTwo} = resData?.info;
-    const { deliveryTime } = resData?.info.sla;
-
-    return(
-        <div className="res-card">
-            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} style={{width: "230px"}}></img>
-            <h4 className="res-name">{name}</h4>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{avgRatingString} Stars</h4>
-            <h4>{costForTwo}</h4>
-            <h4>ETA: {deliveryTime} MINS</h4>
-        </div>
-    )
-}
-
-const Body = () =>{
-    return(
-        <div className="body">
-            <div className="search"><h3>Search</h3></div>
-            <div className="res-container">
-                {
-                    resObj.map(elem => (
-                        <RestaurantCard key={elem.info.id} resData={elem}/>
-                    ))
-                }
-            </div>
-        </div>
-    )
-}
-
-
-const AppLayout = () =>{
-    return <div>
-        <Header/>
-        <Body/>
-    </div>
-}
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>);
+export default resList;
