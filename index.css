@@ -52,10 +52,18 @@
     padding: 5px;
 }
 
-.res-container{
+.res-container, 
+.shimmer-container{
     margin: 10px;
     padding: 10px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.shimmer-card{
+    width: 234px;
+    height: 390px;
+    margin: 10px;
+    background: #f0f0f0f0;
 }
