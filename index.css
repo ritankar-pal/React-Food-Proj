@@ -38,7 +38,7 @@
     background: #f0f0f0f0;
 }
 
-.res-card,.filter-btn:hover{
+.res-card,.filter-btn:hover, .search-btn:hover{
     cursor: pointer;
     border: 2px solid black;
 }
@@ -47,9 +47,10 @@
     text-align: center;
 }
 
-.filter-btn{
+.filter-btn, .search-btn{
     margin: 10px;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .res-container, 
@@ -66,4 +67,35 @@
     height: 390px;
     margin: 10px;
     background: #f0f0f0f0;
+}
+
+.login-btn{
+    width: 100px;
+    margin: 10px;
+    padding: 5px;
+    background-color: rgb(235, 130, 18);
+    border-radius: 6px;
+}
+
+.login-btn:hover{
+    cursor: pointer;
+    background-color: rgb(245, 212, 92);
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.input-txt{
+    padding: 5px;
+    height: 30px;
+    border-color: orange;
+    border-radius: 5px;
+}
+
+.search-btn{
+    width: 100px;
 }
