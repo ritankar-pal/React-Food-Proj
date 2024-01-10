@@ -99,3 +99,14 @@
 .search-btn{
     width: 100px;
 }
+
+.menu-container{
+    margin: auto;
+    width: 80%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.resHeading{
+    margin-bottom: 20px;
+}
