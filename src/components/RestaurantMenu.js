@@ -2,29 +2,17 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_URL } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 
 
 const RestaurantMenu = () => {
 
-    const [resInfo, setResinfo] = useState(null);
-
     const { resId } = useParams();
     // console.log(resId);
 
-    //load the specific Restaurant Details:
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-
-    //684427
-    const fetchMenu = async () =>{
-        const data = await fetch(MENU_URL + resId);
-        const json = await data.json();
-        // console.log(json);
-
-        setResinfo(json.data);
-    }   
+    //Using our Custom Hook: useRestaurantMenu() = for the logic of Data fetching:
+    const resInfo = useRestaurantMenu(resId);
 
     if(resInfo === null) return <Shimmer/>
 
@@ -33,7 +21,12 @@ const RestaurantMenu = () => {
 
     //destructuring the food items:
     const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-    console.log(itemCards);
+    // console.log(itemCards);
+
+    const allMenus = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
+    const allMenuItems = allMenus.filter(elem => elem.card.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    console.log(allMenuItems);
 
     return(
         <div className="menu-container">

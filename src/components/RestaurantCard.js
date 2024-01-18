@@ -4,21 +4,36 @@ import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (props) =>{
 
     const { resData } = props;
-    // console.log(resData);
+    // console.log(props);
 
     const {cloudinaryImageId, name, cuisines, avgRatingString, costForTwo} = resData?.info;
     const { deliveryTime } = resData?.info.sla;
 
     return(
-        <div className="res-card">
-            <img src={CDN_URL + cloudinaryImageId} style={{width: "230px"}}></img>
-            <h4 className="res-name">{name}</h4>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{avgRatingString} Stars</h4>
-            <h4>{costForTwo}</h4>
-            <h4>ETA: {deliveryTime} MINS</h4>
+        <div className="m-2 p-2 w-[250] text-left bg-slate-100 rounded-md hover:bg-slate-200">
+            <img src={CDN_URL + cloudinaryImageId} className="rounded-sm"></img>
+            <h4 className="res-name font-bold">{name}</h4>
+            <h4 className="italic text-gray-500">{cuisines.join(", ")}</h4>
+            <h4 className="text-gray-500">{avgRatingString} Stars</h4>
+            <h4 className="text-gray-700">{costForTwo}</h4>
+            <h4 className="text-gray-600">ETA: {deliveryTime} MINS</h4>
         </div>
     )
 }
+
+
+//Higher Order Component Of RestaurantCard:
+export const withPromotedLabel = (RestaurantCard) =>{
+    return (props) =>{
+        // console.log(props);
+        return(
+            <div>
+                <label className="absolute bg-black text-white rounded-sm m-2">Promoted</label>
+                <RestaurantCard {...props}/>
+            </div>
+        )
+    }
+}
+
 
 export default RestaurantCard;

@@ -12,26 +12,29 @@ const Header = () =>{
     }
 
     return(
-        <div className="header">
+        <div className="flex justify-between p-2 bg-orange-400 shadow-orange-400">
             <div className="logo">
-                <img src={LOGO_URL} alt="foodLogo"/>
+                <img src={LOGO_URL} alt="foodLogo" className="w-24"/>
             </div>
 
-            <div className="nav-items">
-                <ul>
-                    <li>
+            <div>
+                <ul className="flex m-4 content-center font-semibold text-lg">
+                    <li className="p-4">
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li className="p-4">
+                        <Link to="/grocery">Groceries</Link>
+                    </li>
+                    <li className="p-4">
                         <Link to="/about">About</Link>
                     </li>
-                    <li>
+                    <li className="p-4">
                         <Link to="/contact">Contact Us</Link>
                     </li>
-                    <li>
+                    <li className="p-4">
                         <Link to="/cart">Cart</Link>
                     </li>
-                    <button className="login-btn" onClick={loginHandler}>{register}</button>
+                    <button className="p-4" onClick={loginHandler}>{register}</button>
                 </ul>
             </div>
         </div>
